@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="smedia_actionbar_size">44dp</dimen>
+
+    <dimen name="smedia_actionbar_title_size">14sp</dimen>
+    <dimen name="smedia_icon_size">30dp</dimen>
+</resources>

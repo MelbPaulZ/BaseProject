@@ -5,10 +5,11 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url "http://objectbox.net/beta-repo/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
-        
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath "io.objectbox:objectbox-gradle-plugin:1.4.1"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -19,6 +20,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "http://objectbox.net/beta-repo/" }
     }
 }
 
@@ -44,5 +46,9 @@ ext {
     retrofitRxJavaVersion = '2.1.0'
     retrofitRxJava2Version = '2.3.0'
     rxandroidVersion = '2.0.1'
+    butternifeVersion = '8.8.1'
+    picassoVersion = '2.5.2'
+//    greendaoVersion = '3.2.2'
 //    gsonVersion = '2.8.2'
+    objectboxVersion = '1.4.1'
 }

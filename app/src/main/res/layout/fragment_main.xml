@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--first top bar section-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/smedia_actionbar_size">
+
+        <TextView
+            android:id="@+id/signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/smedia_actionbar_title_size"
+            android:textColor="@color/smedia_default_color"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:padding="5dp"
+            android:text="@string/smedia_signin"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/header"
+            android:layout_margin="5dp"/>
+
+        <ImageView
+            android:layout_width="@dimen/smedia_icon_size"
+            android:layout_height="@dimen/smedia_icon_size"
+            android:padding="5dp"
+            android:src="@drawable/burger"
+            android:tint="@color/smedia_default_color"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+    
+    <!--banner-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/banner"
+        android:layout_gravity="top"
+        android:scaleType="fitXY"/>
+    
+    <!--main issue view-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="vertical">
+        
+        <ImageView
+            android:id="@+id/main_issue_image"
+            android:layout_width="160dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/main_issue_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="name"
+            android:textColor="@color/smedia_default_text_color"/>
+
+        <TextView
+            android:id="@+id/main_issue_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="this is description. xxx xxxx asdasda as dasd asd sdaf df asf sadf sdf asdfdas "
+            android:layout_gravity="center_horizontal"
+            />
+        
+    </LinearLayout>
+
+    <!--button part-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="button1"
+            android:textAlignment="center"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="back issues"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

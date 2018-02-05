@@ -5,6 +5,8 @@ import android.util.Log;
 
 import java.util.List;
 
+import au.com.smedia.baseproject.bean.SmediaIssue;
+import au.com.smedia.baseproject.manager.DBManager;
 import au.com.smedia.baseproject.restfulapi.MagazineApi;
 import au.com.smedia.baseproject.restfulresponse.HttpResult;
 import au.com.smedia.baseproject.restfulresponse.SmediaResponseTitle;
@@ -12,6 +14,7 @@ import au.com.smedia.baseproject.ui.contract.MainFragmentContract;
 import au.com.smedia.baseproject.ui.fragment.MainFragment;
 import au.com.smedia.baseproject.url.SampleUrlFactory;
 import au.com.smedia.baseproject.util.HttpUtil;
+import au.com.smedia.baseproject.util.SmediaUtil;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -34,6 +37,7 @@ public class MainPresenter implements MainFragmentContract.Presenter {
     @Override
     public void subscribe(MainFragmentContract.View view) {
         mView = view;
+        retriveLatestMagazines();
     }
 
     @Override
@@ -58,9 +62,17 @@ public class MainPresenter implements MainFragmentContract.Presenter {
                 Log.i(TAG, "onNext: ");
                 SmediaResponseTitle title = smediaResponseTitleHttpResult.getTitles()[0];
                 String production = title.getProduction();
-                List<SmediaResponseTitle.SmediaIssues> issueList = title.getIssues();
-                SmediaResponseTitle.SmediaIssue issue = issueList.get(0).getIssue();
+                List<SmediaResponseTitle.SmediaIssues> issueList = title.getMagazines();
+                SmediaIssue issue = issueList.get(0).getIssue();
                 Log.i(TAG, "onNext: ");
+
+//                List<SmediaResponseTitle.SmediaIssues> magazineList = title.getMagazines();
+                DBManager.getInstance(mContext).saveOrReplaceMagazine(issue);
+                SmediaIssue getIssue = DBManager.getInstance(mContext).getMagazine(issue.getId());
+                if (mView!=null){
+                    String bigThumbImage = SmediaUtil.thumbNailToBigImage(issue.getCover());
+                    mView.updateMainIssueView(bigThumbImage, production, issue.getDescription());
+                }
 
             }
 
