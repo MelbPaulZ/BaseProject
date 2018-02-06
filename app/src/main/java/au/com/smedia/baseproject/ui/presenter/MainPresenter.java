@@ -59,14 +59,11 @@ public class MainPresenter implements MainFragmentContract.Presenter {
 
             @Override
             public void onNext(HttpResult<SmediaResponseTitle> smediaResponseTitleHttpResult) {
-                Log.i(TAG, "onNext: ");
                 SmediaResponseTitle title = smediaResponseTitleHttpResult.getTitles()[0];
                 String production = title.getProduction();
                 List<SmediaResponseTitle.SmediaIssues> issueList = title.getMagazines();
                 SmediaIssue issue = issueList.get(0).getIssue();
-                Log.i(TAG, "onNext: ");
 
-//                List<SmediaResponseTitle.SmediaIssues> magazineList = title.getMagazines();
                 DBManager.getInstance(mContext).saveOrReplaceMagazine(issue);
                 SmediaIssue getIssue = DBManager.getInstance(mContext).getMagazine(issue.getId());
                 if (mView!=null){

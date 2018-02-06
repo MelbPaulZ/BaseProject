@@ -3,8 +3,6 @@ package au.com.smedia.baseproject.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +13,10 @@ import com.squareup.picasso.Picasso;
 
 import au.com.smedia.baseproject.R;
 import au.com.smedia.baseproject.base.BaseFragment;
-import au.com.smedia.baseproject.base.BasePresenter;
 import au.com.smedia.baseproject.ui.contract.MainFragmentContract;
-import au.com.smedia.baseproject.ui.presenter.MainPresenter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 /**
  * Created by puzhao on 2/2/18.
@@ -33,7 +30,7 @@ public class MainFragment extends BaseFragment implements MainFragmentContract.V
     @BindView(R.id.main_issue_description) TextView issueDescription;
 
     private MainFragmentContract.Presenter mainPresenter;
-
+    private static String TAG = MainFragment.class.getSimpleName();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +43,12 @@ public class MainFragment extends BaseFragment implements MainFragmentContract.V
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
     }
 
     @Override

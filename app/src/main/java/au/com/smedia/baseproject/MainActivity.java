@@ -14,10 +14,11 @@ public class MainActivity extends SmediaBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null){
-            MainFragment mainFragment = new MainFragment();
+        MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentByTag(MainFragment.class.getSimpleName());
+        if (mainFragment == null) {
+            mainFragment = new MainFragment();
             mainFragment.setPresenter(new MainPresenter(getApplicationContext()));
-            getSupportFragmentManager().beginTransaction().add(getContainerId(), mainFragment).commit();
+            getSupportFragmentManager().beginTransaction().add(getContainerId(),mainFragment, MainFragment.class.getSimpleName()).commit();
         }
 
 
